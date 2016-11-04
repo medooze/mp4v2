@@ -178,6 +178,48 @@ private:
     MP4AvcCAtom &operator= ( const MP4AvcCAtom &src );
 };
 
+// VPXX atoms https://storage.googleapis.com/downloads.webmproject.org/docs/vp9/vp-codec-iso-media-file-format-binding-20160516-draft.pdf
+
+class MP4Vp08Atom : public MP4Atom {
+public:
+    MP4Vp08Atom(MP4File &file);
+    void Generate();
+private:
+    MP4Vp08Atom();
+    MP4Vp08Atom( const MP4Vp08Atom &src );
+    MP4Vp08Atom &operator= ( const MP4Vp08Atom &src );
+};
+
+class MP4Vp09Atom : public MP4Atom {
+public:
+    MP4Vp09Atom(MP4File &file);
+    void Generate();
+private:
+    MP4Vp09Atom();
+    MP4Vp09Atom( const MP4Vp09Atom &src );
+    MP4Vp09Atom &operator= ( const MP4Vp09Atom &src );
+};
+
+class MP4Vp10Atom : public MP4Atom {
+public:
+    MP4Vp10Atom(MP4File &file);
+    void Generate();
+private:
+    MP4Vp10Atom();
+    MP4Vp10Atom( const MP4Vp10Atom &src );
+    MP4Vp10Atom &operator= ( const MP4Vp10Atom &src );
+};
+
+class MP4PvcCAtom : public MP4Atom {
+public:
+    MP4PvcCAtom(MP4File &file);
+    void Generate();
+private:
+    MP4PvcCAtom();
+    MP4PvcCAtom( const MP4PvcCAtom &src );
+    MP4PvcCAtom &operator= ( const MP4PvcCAtom &src );
+};
+
 
 class MP4D263Atom : public MP4Atom {
 public:

@@ -287,6 +287,7 @@ static char* PrintVideoInfo(
         MP4_YUV12_VIDEO_TYPE,
         MP4_H263_VIDEO_TYPE,
         MP4_H261_VIDEO_TYPE,
+        MP4_VP8_VIDEO_TYPE,
     };
     static const char* mpegVideoNames[] = {
         "MPEG-2 Simple",
@@ -300,6 +301,7 @@ static char* PrintVideoInfo(
         "YUV12",
         "H.263",
         "H.261",
+        "VP8",
     };
     uint8_t numMpegVideoTypes =
         sizeof(mpegVideoTypes) / sizeof(uint8_t);
@@ -388,6 +390,9 @@ static char* PrintVideoInfo(
     } else if (strcasecmp(media_data_name, "s263") == 0) {
         // 3gp h.263
         typeName = "H.263";
+        foundTypeName = true;
+    } else if (strcasecmp(media_data_name, "vp08") == 0) {
+        typeName = "VP8";
         foundTypeName = true;
     } else if ((strcasecmp(media_data_name, "mp4v") == 0) ||
                (strcasecmp(media_data_name, "encv") == 0)) {

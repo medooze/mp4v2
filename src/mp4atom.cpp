@@ -649,9 +649,11 @@ void MP4Atom::Dump(uint8_t indent, bool dumpImplicits)
         if( can.length() )
             can.resize( can.length() - 1 );
 
-        log.dump(indent, MP4_LOG_VERBOSE1, "\"%s\": type %s (%s)",
+        log.dump(indent, MP4_LOG_VERBOSE1, "\"%s\": type %s (%s) %d childs %d properties",
                  GetFile().GetFilename().c_str(),
-                 m_type, can.c_str() );
+                 m_type, can.c_str(),
+                 m_pChildAtoms.Size(),
+                 m_pProperties.Size());
     }
 
     uint32_t i;
@@ -928,6 +930,8 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
         case 'p':
             if( ATOMID(type) == ATOMID("pasp") )
                 return new MP4PaspAtom(file);
+            if( ATOMID(type) == ATOMID("pvcC") )
+                return new MP4PvcCAtom(file);
             break;
 
         case 'r':
@@ -997,6 +1001,12 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
         case 'v':
             if( ATOMID(type) == ATOMID("vmhd") )
                 return new MP4VmhdAtom(file);
+            if( ATOMID(type) == ATOMID("vp08") )
+                return new MP4Vp08Atom(file);
+            if( ATOMID(type) == ATOMID("vp09") )
+                return new MP4Vp09Atom(file);
+            if( ATOMID(type) == ATOMID("vp10") )
+                return new MP4Vp10Atom(file);
             break;
 
         case 'y':
