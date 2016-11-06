@@ -124,6 +124,13 @@ MP4TrackId MP4AddAudioTrack(
     MP4Duration   sampleDuration,
     uint8_t       audioType DEFAULT(MP4_MPEG4_AUDIO_TYPE) );
 
+MP4V2_EXPORT
+MP4TrackId MP4AddOpusAudioTrack(
+    MP4FileHandle hFile,
+    uint32_t timeScale,
+    uint16_t channelCount,
+    uint32_t samplingRate);
+
 /** Add ulaw track to mp4 file.
  *
  *  MP4AddULawAudioTrack adds a ulaw track to the mp4 file. MP4WriteSample()

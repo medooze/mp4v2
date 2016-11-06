@@ -52,7 +52,7 @@ MP4Vp08Atom::MP4Vp08Atom(MP4File &file)
 
     AddReserved(*this, "reserved4", 4); /* 7 */
 
-    ExpectChildAtom("pvcC", Required, OnlyOne);
+    ExpectChildAtom("vpcC", Required, OnlyOne);
 }
 
 void MP4Vp08Atom::Generate()
@@ -113,7 +113,7 @@ MP4Vp09Atom::MP4Vp09Atom(MP4File &file)
 
     AddReserved(*this, "reserved4", 4); /* 7 */
 
-    ExpectChildAtom("pvcC", Required, OnlyOne);
+    ExpectChildAtom("vpcC", Required, OnlyOne);
 }
 
 void MP4Vp09Atom::Generate()
@@ -174,7 +174,7 @@ MP4Vp10Atom::MP4Vp10Atom(MP4File &file)
 
     AddReserved(*this, "reserved4", 4); /* 7 */
 
-    ExpectChildAtom("pvcC", Required, OnlyOne);
+    ExpectChildAtom("vpcC", Required, OnlyOne);
 }
 
 void MP4Vp10Atom::Generate()

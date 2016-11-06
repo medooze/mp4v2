@@ -26,8 +26,8 @@ namespace impl {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-MP4PvcCAtom::MP4PvcCAtom(MP4File &file)
-        : MP4Atom(file, "pvcC")
+MP4VpcCAtom::MP4VpcCAtom(MP4File &file)
+        : MP4FullAtom(file, "vpcC")
 {
     
     AddProperty( new MP4Integer8Property(*this,"profile")); /* 0 */
@@ -41,9 +41,9 @@ MP4PvcCAtom::MP4PvcCAtom(MP4File &file)
     AddProperty( new MP4BytesProperty(*this,"codecIntializationData",0)); /* 8 */
 }
 
-void MP4PvcCAtom::Generate()
+void MP4VpcCAtom::Generate()
 {
-    MP4Atom::Generate();
+    MP4FullAtom::Generate();
     ((MP4Integer8Property*)m_pProperties[0])->SetValue(0);
     ((MP4Integer8Property*)m_pProperties[1])->SetValue(0);
     ((MP4BitfieldProperty*)m_pProperties[2])->SetValue(0);
@@ -52,7 +52,7 @@ void MP4PvcCAtom::Generate()
     ((MP4BitfieldProperty*)m_pProperties[5])->SetValue(0);
     ((MP4BitfieldProperty*)m_pProperties[6])->SetValue(0);
     ((MP4Integer16Property*)m_pProperties[7])->SetValue(0);
-    ((MP4BytesProperty*)m_pProperties[8])->SetCount(0);
+    //((MP4BytesProperty*)m_pProperties[8])->SetValueSize(0,0);
 }
 ///////////////////////////////////////////////////////////////////////////////
 

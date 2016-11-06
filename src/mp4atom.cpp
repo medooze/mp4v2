@@ -925,13 +925,15 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
         case 'o':
             if( ATOMID(type) == ATOMID("ohdr") )
                 return new MP4OhdrAtom(file);
+            if( ATOMID(type) == ATOMID("Opus") )
+                return new MP4OpusAtom(file);
+            if( ATOMID(type) == ATOMID("dOps") )
+                return new MP4DOpsAtom(file);
             break;
 
         case 'p':
             if( ATOMID(type) == ATOMID("pasp") )
                 return new MP4PaspAtom(file);
-            if( ATOMID(type) == ATOMID("pvcC") )
-                return new MP4PvcCAtom(file);
             break;
 
         case 'r':
@@ -1007,6 +1009,9 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
                 return new MP4Vp09Atom(file);
             if( ATOMID(type) == ATOMID("vp10") )
                 return new MP4Vp10Atom(file);
+            if( ATOMID(type) == ATOMID("vpcC") )
+                return new MP4VpcCAtom(file);
+
             break;
 
         case 'y':

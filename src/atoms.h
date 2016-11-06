@@ -178,6 +178,28 @@ private:
     MP4AvcCAtom &operator= ( const MP4AvcCAtom &src );
 };
 
+// Opus https://www.opus-codec.org/docs/opus_in_isobmff.html
+
+class MP4OpusAtom : public MP4Atom {
+public:
+    MP4OpusAtom(MP4File &file);
+    void Generate();
+private:
+    MP4OpusAtom();
+    MP4OpusAtom( const MP4OpusAtom &src );
+    MP4OpusAtom &operator= ( const MP4OpusAtom &src );
+};
+
+class MP4DOpsAtom : public MP4Atom {
+public:
+    MP4DOpsAtom(MP4File &file);
+    void Generate();
+private:
+    MP4DOpsAtom();
+    MP4DOpsAtom( const MP4DOpsAtom &src );
+    MP4DOpsAtom &operator= ( const MP4DOpsAtom &src );
+};
+
 // VPXX atoms https://storage.googleapis.com/downloads.webmproject.org/docs/vp9/vp-codec-iso-media-file-format-binding-20160516-draft.pdf
 
 class MP4Vp08Atom : public MP4Atom {
@@ -210,14 +232,14 @@ private:
     MP4Vp10Atom &operator= ( const MP4Vp10Atom &src );
 };
 
-class MP4PvcCAtom : public MP4Atom {
+class MP4VpcCAtom : public MP4FullAtom {
 public:
-    MP4PvcCAtom(MP4File &file);
+    MP4VpcCAtom(MP4File &file);
     void Generate();
 private:
-    MP4PvcCAtom();
-    MP4PvcCAtom( const MP4PvcCAtom &src );
-    MP4PvcCAtom &operator= ( const MP4PvcCAtom &src );
+    MP4VpcCAtom();
+    MP4VpcCAtom( const MP4VpcCAtom &src );
+    MP4VpcCAtom &operator= ( const MP4VpcCAtom &src );
 };
 
 
