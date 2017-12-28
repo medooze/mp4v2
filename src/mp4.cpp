@@ -918,7 +918,7 @@ MP4FileHandle MP4ReadProvider( const char* fileName, const MP4FileProvider* file
         }
 
         catch (...) {
-            return MP4_INVALID_TRACK_ID;
+            return NULL;
         }
     }
 
