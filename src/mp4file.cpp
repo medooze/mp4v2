@@ -1895,6 +1895,26 @@ MP4TrackId MP4File::AddVP8VideoTrack(
     return trackId;
 }
 
+MP4TrackId MP4File::AddVP9VideoTrack(
+    uint32_t timeScale,
+    MP4Duration sampleDuration,
+    uint16_t width,
+    uint16_t height)
+{
+    MP4TrackId trackId = AddVideoTrackDefault(timeScale,
+                         sampleDuration,
+                         width,
+                         height,
+                         "vp09");
+
+    SetTrackIntegerProperty(trackId,
+                            "mdia.minf.stbl.stsd.vp09.width", width);
+    SetTrackIntegerProperty(trackId,
+                            "mdia.minf.stbl.stsd.vp09.height", height);
+    
+    return trackId;
+}
+
 MP4TrackId MP4File::AddEncH264VideoTrack(
     uint32_t timeScale,
     MP4Duration sampleDuration,
