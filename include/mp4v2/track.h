@@ -262,6 +262,14 @@ MP4TrackId MP4AddVP8VideoTrack(
     uint16_t      height );
 
 MP4V2_EXPORT
+MP4TrackId MP4AddVP9VideoTrack(
+    MP4FileHandle hFile,
+    uint32_t      timeScale,
+    MP4Duration   sampleDuration,
+    uint16_t      width,
+    uint16_t      height );
+
+MP4V2_EXPORT
 MP4TrackId MP4AddH264VideoTrack(
     MP4FileHandle hFile,
     uint32_t      timeScale,
