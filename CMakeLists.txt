@@ -16,6 +16,8 @@ endif()
 
 include_directories("${CMAKE_SOURCE_DIR}" "${CMAKE_SOURCE_DIR}/include")
 
+set(PROJECT_repo_rev 0)
+
 configure_file(${CMAKE_CURRENT_LIST_DIR}/include/mp4v2/project.h.in ${CMAKE_CURRENT_LIST_DIR}/include/mp4v2/project.h)
 configure_file(${CMAKE_CURRENT_LIST_DIR}/libplatform/config.h.in ${CMAKE_CURRENT_LIST_DIR}/libplatform/config.h)
 
