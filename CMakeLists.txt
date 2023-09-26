@@ -231,11 +231,9 @@ set(UTILITY_HEADERS
 
 add_executable(mp4art ${UTILITY_HEADERS} ${CMAKE_CURRENT_LIST_DIR}/util/mp4art.cpp)
 target_link_libraries(mp4art mp4v2-static)
-target_compile_options(mp4art PUBLIC -Wno-narrowing)
 
 add_executable(mp4chaps ${UTILITY_HEADERS} ${CMAKE_CURRENT_LIST_DIR}/util/mp4chaps.cpp)
 target_link_libraries(mp4chaps mp4v2-static)
-target_compile_options(mp4chaps PUBLIC -Wno-narrowing)
 
 add_executable(mp4extract ${UTILITY_HEADERS} ${CMAKE_CURRENT_LIST_DIR}/util/mp4extract.cpp)
 target_link_libraries(mp4extract mp4v2-static)
