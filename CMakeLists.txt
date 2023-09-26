@@ -204,6 +204,11 @@ set(SOURCE_FILES
 )
 
 add_library(mp4v2-shared SHARED ${HEADER_FILES} ${SOURCE_FILES})
+target_include_directories(mp4v2-shared PUBLIC
+    ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_CURRENT_LIST_DIR}/include
+)
+
 add_library(mp4v2-static STATIC ${HEADER_FILES} ${SOURCE_FILES})
 target_include_directories(mp4v2-static PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}
