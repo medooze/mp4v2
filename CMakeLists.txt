@@ -208,12 +208,15 @@ target_include_directories(mp4v2-shared PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}
     ${CMAKE_CURRENT_LIST_DIR}/include
 )
+target_compile_options(mp4v2-shared PUBLIC -Wno-narrowing)
 
 add_library(mp4v2-static STATIC ${HEADER_FILES} ${SOURCE_FILES})
 target_include_directories(mp4v2-static PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}
     ${CMAKE_CURRENT_LIST_DIR}/include
 )
+
+target_compile_options(mp4v2-static PUBLIC -Wno-narrowing)
 
 #for debugging
 #target_compile_options(mp4v2-static PUBLIC
