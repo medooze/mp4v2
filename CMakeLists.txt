@@ -203,19 +203,19 @@ set(SOURCE_FILES
        ${CMAKE_CURRENT_LIST_DIR}/src/text.cpp
 )
 
-#add_library(mp4v2-shared SHARED ${HEADER_FILES} ${SOURCE_FILES})
+add_library(mp4v2-shared SHARED ${HEADER_FILES} ${SOURCE_FILES})
 add_library(mp4v2-static STATIC ${HEADER_FILES} ${SOURCE_FILES})
-#add_library(mp4v2-static ${HEADER_FILES} ${SOURCE_FILES})
 target_include_directories(mp4v2-static PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}
     ${CMAKE_CURRENT_LIST_DIR}/include
 )
 
-target_compile_options(mp4v2-static PUBLIC
-    -Wliteral-suffix
-    -ggdb
-    -O0
-)
+#for debugging
+#target_compile_options(mp4v2-static PUBLIC
+#    -Wliteral-suffix
+#    -ggdb
+#    -O0
+#)
 
 set(UTILITY_HEADERS
         ${CMAKE_CURRENT_LIST_DIR}/util/impl.h)
@@ -246,13 +246,4 @@ target_link_libraries(mp4track mp4v2-static)
 
 add_executable(mp4trackdump ${UTILITY_HEADERS} ${CMAKE_CURRENT_LIST_DIR}/util/mp4trackdump.cpp)
 target_link_libraries(mp4trackdump mp4v2-static)
-
-
-
-
-
-
-
-
-
 
