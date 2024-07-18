@@ -823,6 +823,10 @@ MP4Atom::factory( MP4File &file, MP4Atom* parent, const char* type )
             break;
 
         case 'a':
+            if (ATOMID(type) == ATOMID("av01"))
+                return new MP4Av01Atom(file);
+            if (ATOMID(type) == ATOMID("av1C"))
+                    return new MP4Av1CAtom(file);
             if( ATOMID(type) == ATOMID("avc1") )
                 return new MP4Avc1Atom(file);
             if( ATOMID(type) == ATOMID("ac-3") )

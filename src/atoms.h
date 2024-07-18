@@ -200,6 +200,29 @@ private:
     MP4DOpsAtom &operator= ( const MP4DOpsAtom &src );
 };
 
+// https://aomediacodec.github.io/av1-isobmff/
+
+class MP4Av01Atom : public MP4Atom {
+public:
+	MP4Av01Atom(MP4File& file);
+	void Generate();
+private:
+	MP4Av01Atom();
+	MP4Av01Atom(const MP4Av01Atom& src);
+	MP4Av01Atom& operator= (const MP4Av01Atom& src);
+};
+
+class MP4Av1CAtom : public MP4FullAtom {
+public:
+	MP4Av1CAtom(MP4File& file);
+	void Generate();
+private:
+	MP4Av1CAtom();
+	MP4Av1CAtom(const MP4Av1CAtom& src);
+	MP4Av1CAtom& operator= (const MP4Av1CAtom& src);
+};
+
+
 // VPXX atoms https://storage.googleapis.com/downloads.webmproject.org/docs/vp9/vp-codec-iso-media-file-format-binding-20160516-draft.pdf
 
 class MP4Vp08Atom : public MP4Atom {

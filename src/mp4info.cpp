@@ -289,6 +289,7 @@ static char* PrintVideoInfo(
         MP4_H261_VIDEO_TYPE,
         MP4_VP8_VIDEO_TYPE,
 	MP4_VP9_VIDEO_TYPE,
+        MP4_AV1_VIDEO_TYPE,
     };
     static const char* mpegVideoNames[] = {
         "MPEG-2 Simple",
@@ -304,6 +305,7 @@ static char* PrintVideoInfo(
         "H.261",
         "VP8",
 	"VP9",
+        "AV1",
     };
     uint8_t numMpegVideoTypes =
         sizeof(mpegVideoTypes) / sizeof(uint8_t);
