@@ -122,8 +122,10 @@ set(SOURCE_FILES
        ${CMAKE_CURRENT_LIST_DIR}/src/3gp.cpp
        ${CMAKE_CURRENT_LIST_DIR}/src/atom_ac3.cpp
        ${CMAKE_CURRENT_LIST_DIR}/src/atom_amr.cpp
+       ${CMAKE_CURRENT_LIST_DIR}/src/atom_av1C.cpp
        ${CMAKE_CURRENT_LIST_DIR}/src/atom_avc1.cpp
        ${CMAKE_CURRENT_LIST_DIR}/src/atom_avcC.cpp
+       ${CMAKE_CURRENT_LIST_DIR}/src/atom_avxx.cpp
        ${CMAKE_CURRENT_LIST_DIR}/src/atom_chpl.cpp
        ${CMAKE_CURRENT_LIST_DIR}/src/atom_colr.cpp
        ${CMAKE_CURRENT_LIST_DIR}/src/atom_d263.cpp

@@ -187,6 +187,7 @@ typedef uint32_t (*encryptFunc_t)( uint32_t, uint32_t, uint8_t*, uint32_t*, uint
 #define MP4_H261_VIDEO_TYPE             0xF3    /* a private definition */
 #define MP4_VP8_VIDEO_TYPE              0xF4    /* a private definition */
 #define MP4_VP9_VIDEO_TYPE              0xF5    /* a private definition */
+#define MP4_AV1_VIDEO_TYPE              0xF6    /* a private definition */
 
 /* MP4 Video type utilities */
 #define MP4_IS_MPEG1_VIDEO_TYPE(type) \
