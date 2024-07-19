@@ -59,7 +59,7 @@ void MP4File::Init()
     m_memoryBuffer = NULL;
     m_memoryBufferSize = 0;
     m_memoryBufferPosition = 0;
-
+    
     m_numReadBits = 0;
     m_bufReadBits = 0;
     m_numWriteBits = 0;
@@ -73,8 +73,8 @@ MP4File::~MP4File()
     delete m_pRootAtom;
     for( uint32_t i = 0; i < m_pTracks.Size(); i++ )
         delete m_pTracks[i];
+    CHECK_AND_FREE(m_editName);
     MP4Free( m_memoryBuffer ); // just in case
-    CHECK_AND_FREE( m_editName );
     delete m_file;
 }
 
@@ -2445,7 +2445,7 @@ void MP4File::AddChapter(MP4TrackId chapterTrackId, MP4Duration chapterDuration,
     }
 
     uint32_t sampleLength = 0;
-    uint8_t  sample[1040] = {0};
+    uint8_t  sample[MP4V2_CHAPTER_TITLE_MAX + 2 + 12] = {0};
     int textLen = 0;
     char *text = (char *)&(sample[2]);
 
@@ -2454,7 +2454,7 @@ void MP4File::AddChapter(MP4TrackId chapterTrackId, MP4Duration chapterDuration,
         textLen = min((uint32_t)strlen(chapterTitle), (uint32_t)MP4V2_CHAPTER_TITLE_MAX);
         if (0 < textLen)
         {
-            strncpy(text, chapterTitle, textLen);
+            strncpy(text, chapterTitle, MP4V2_CHAPTER_TITLE_MAX);
         }
     }
     else
@@ -2513,7 +2513,7 @@ void MP4File::AddNeroChapter(MP4Timestamp chapterStart, const char * chapterTitl
     else
     {
         int len = min((uint32_t)strlen(chapterTitle), (uint32_t)255);
-        strncpy( buffer, chapterTitle, len );
+        strncpy(buffer, chapterTitle, sizeof(buffer));
         buffer[len] = 0;
     }
 
@@ -2544,7 +2544,7 @@ MP4TrackId MP4File::FindChapterReferenceTrack(MP4TrackId chapterTrackId, char * 
                 if( 0 != trackName )
                 {
                     int nameLen = min((uint32_t)strlen(name), (uint32_t)trackNameSize);
-                    strncpy(trackName, name, nameLen);
+                    strncpy(trackName, name, trackNameSize);
                     trackName[nameLen] = 0;
                 }
 
@@ -2753,7 +2753,7 @@ MP4ChapterType MP4File::GetChapters(MP4Chapter_t ** chapterList, uint32_t * chap
         {
             // insert the chapter title
             uint32_t len = min((uint32_t)strlen(name), (uint32_t)MP4V2_CHAPTER_TITLE_MAX);
-            strncpy(chapters[i].title, name, len);
+            strncpy(chapters[i].title, name, MP4V2_CHAPTER_TITLE_MAX);
             chapters[i].title[len] = 0;
 
             // calculate the duration
@@ -4213,11 +4213,11 @@ char* MP4File::MakeTrackEditName(
 {
     char* trakName = MakeTrackName(trackId, NULL);
 
-    if (m_editName == NULL) {
-        m_editName = (char *)malloc(1024);
-        if (m_editName == NULL) return NULL;
-    }
-    snprintf(m_editName, 1024,
+    CHECK_AND_FREE(m_editName);
+    size_t length = strlen(trakName) + strlen(name) + sizeof(editId) + 19;
+    m_editName = (char*)malloc(length);
+
+    snprintf(m_editName, length,
              "%s.edts.elst.entries[%u].%s",
              trakName, editId - 1, name);
     return m_editName;

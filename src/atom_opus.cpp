@@ -61,7 +61,7 @@ void MP4OpusAtom::Generate()
     ((MP4Integer16Property*)m_pProperties[1])->SetValue(1); // data-reference-index
     ((MP4Integer16Property*)m_pProperties[3])->SetValue(2); // channelCount - should be overriden
     ((MP4Integer16Property*)m_pProperties[4])->SetValue(16); // The samplesize field shall be set to 16
-    ((MP4Integer16Property*)m_pProperties[6])->SetValue(48000<<16); //The samplerate field shall be set to 48000<<16.
+    ((MP4Integer16Property*)m_pProperties[6])->SetValue(48000u); //The samplerate field shall be set to 48000
  }
 
 ///////////////////////////////////////////////////////////////////////////////
