@@ -304,6 +304,14 @@ void MP4AddH264PictureParameterSet(
     uint16_t       pictLen );
 
 MP4V2_EXPORT
+void MP4SetAv1SequenceObu(
+	MP4FileHandle  hFile,
+	MP4TrackId     trackId,
+	const uint8_t* pSequence,
+	uint16_t       sequenceLen);
+
+
+MP4V2_EXPORT
 void MP4SetH263Vendor(
     MP4FileHandle hFile,
     MP4TrackId    trackId,

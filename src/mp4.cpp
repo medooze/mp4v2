@@ -1414,6 +1414,31 @@ MP4FileHandle MP4ReadProvider( const char* fileName, const MP4FileProvider* file
         }
         return;
     }
+    void MP4SetAv1SequenceObu(
+            MP4FileHandle  hFile,
+            MP4TrackId     trackId,
+            const uint8_t* pSequence,
+            uint16_t       sequenceLen)
+    {
+            if (MP4_IS_VALID_FILE_HANDLE(hFile)) {
+                    try {
+                            MP4File* pFile = (MP4File*)hFile;
+
+                            pFile->SetAv1SequenceObu(trackId,
+                                    pSequence,
+                                    sequenceLen);
+                            return;
+                    }
+                    catch (Exception* x) {
+                            mp4v2::impl::log.errorf(*x);
+                            delete x;
+                    }
+                    catch (...) {
+                            mp4v2::impl::log.errorf("%s: failed", __FUNCTION__);
+                    }
+            }
+            return;
+    }
 
     MP4TrackId MP4AddH263VideoTrack(
         MP4FileHandle hFile,

@@ -385,6 +385,9 @@ public:
     void AddH264PictureParameterSet(MP4TrackId trackId,
                                     const uint8_t *pPicture,
                                     uint16_t pictureLen);
+    void SetAv1SequenceObu(MP4TrackId trackId,
+            const uint8_t* pSequence,
+            uint16_t sequenceLen);
     MP4TrackId AddHintTrack(MP4TrackId refTrackId);
 
     MP4TrackId AddTextTrack(MP4TrackId refTrackId);

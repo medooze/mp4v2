@@ -2105,6 +2105,27 @@ void MP4File::AddH264PictureParameterSet (MP4TrackId trackId,
 
     return;
 }
+
+void MP4File::SetAv1SequenceObu(MP4TrackId trackId,
+        const uint8_t* pSequence,
+        uint16_t sequenceLen)
+{
+        MP4Atom* av1CAtom =
+                FindAtom(MakeTrackName(trackId,
+                        "mdia.minf.stbl.stsd.av01.av1C"));
+        MP4BytesProperty* pUnit;
+        if (av1CAtom->FindProperty("av1C.configOBUs",
+                        (MP4Property**)&pUnit) == false) {
+                log.errorf("%s: \"%s\": Could not find av1C configOBUs properties",
+                        __FUNCTION__, GetFilename().c_str());
+                return;
+        }
+
+        pUnit->SetValue(pSequence, sequenceLen);
+
+        return;
+}
+
 void  MP4File::SetH263Vendor(
     MP4TrackId trackId,
     uint32_t vendor)
