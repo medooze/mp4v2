@@ -212,7 +212,7 @@ private:
 	MP4Av01Atom& operator= (const MP4Av01Atom& src);
 };
 
-class MP4Av1CAtom : public MP4FullAtom {
+class MP4Av1CAtom : public MP4Atom {
 public:
 	MP4Av1CAtom(MP4File& file);
 	void Generate();

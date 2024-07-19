@@ -27,12 +27,11 @@ namespace impl {
 ///////////////////////////////////////////////////////////////////////////////
 
 MP4Av1CAtom::MP4Av1CAtom(MP4File &file)
-        : MP4FullAtom(file, "av1C")
+        : MP4Atom(file, "av1C")
 {
-    
     AddProperty( new MP4BitfieldProperty(*this, "marker", 1)); /* 0 */
     AddProperty( new MP4BitfieldProperty(*this, "version", 7)); /* 1 */
-    AddProperty( new MP4BitfieldProperty(*this, "seq_profile" ,3)); /* 2 */
+    AddProperty( new MP4BitfieldProperty(*this, "seq_profile", 3)); /* 2 */
     AddProperty( new MP4BitfieldProperty(*this, "seq_level_idx_0", 5)); /* 3 */
     AddProperty( new MP4BitfieldProperty(*this, "seq_tier_0", 1)); /* 4 */
     AddProperty( new MP4BitfieldProperty(*this, "high_bitdepth", 1)); /* 5 */
@@ -50,7 +49,7 @@ MP4Av1CAtom::MP4Av1CAtom(MP4File &file)
 
 void MP4Av1CAtom::Generate()
 {
-    MP4FullAtom::Generate();
+    MP4Atom::Generate();
     ((MP4BitfieldProperty*)m_pProperties[0])->SetValue(1);
     ((MP4BitfieldProperty*)m_pProperties[1])->SetValue(1);
     ((MP4BitfieldProperty*)m_pProperties[2])->SetValue(0);
@@ -65,7 +64,6 @@ void MP4Av1CAtom::Generate()
     ((MP4BitfieldProperty*)m_pProperties[11])->SetValue(0);
     ((MP4BitfieldProperty*)m_pProperties[12])->SetValue(0);
     ((MP4BitfieldProperty*)m_pProperties[13])->SetValue(0);
-    //((MP4BytesProperty*)m_pProperties[8])->SetValueSize(0,0);
 }
 ///////////////////////////////////////////////////////////////////////////////
 
